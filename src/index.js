@@ -7,6 +7,10 @@ require('dotenv').config();
 app.set('view engine', 'ejs');
 //set đường dẫn cho thư mục views(view engine phải có thư mục view thì mới đọc được)
 app.set('views', path.join(__dirname, '..', 'resources', 'views'));
+//set middleware để đọc dữ liệu json và form(can be change with body-parser)
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 
 //Express static dùng để lấy những file tĩnh mà không cần viết route
 app.use(express.static(path.join(__dirname, '..', 'public')));

@@ -11,7 +11,6 @@ class SiteController{
     //post login controller
     index(req,res){
         res.json(req.body);
-        console.log("vao chua?");
     }
 }
 

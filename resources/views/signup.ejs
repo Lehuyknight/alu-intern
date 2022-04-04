@@ -45,10 +45,11 @@
                 </p>
 
                 <!-- form -->
-                <form action="#">
+                <form id="signup-form">
                   <div class="form-group">
                     <label for="fullname">Full Name</label>
                     <input
+                      name="fullname"
                       class="form-control"
                       type="text"
                       id="fullname"
@@ -59,6 +60,7 @@
                   <div class="form-group">
                     <label for="emailaddress">Email address</label>
                     <input
+                      name="email"
                       class="form-control"
                       type="email"
                       id="emailaddress"
@@ -70,6 +72,7 @@
                     <label for="password">Password</label>
                     <div class="input-group input-group-merge">
                       <input
+                        name="password"
                         type="password"
                         id="password"
                         class="form-control"
@@ -183,7 +186,7 @@
 
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
-        
+
         //! user js
         <script src="/assets/js/user.js"></script>
       </body>

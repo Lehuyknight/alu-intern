@@ -1,4 +1,7 @@
 const { render } = require('express/lib/response');
+//add User schema
+const User = require('../models/md_user');
+
 //create controller
 class SiteController {
   //get login controller
@@ -20,8 +23,16 @@ class SiteController {
       });
   }
   //post signup controller
-  signupHandler(req, res){
-      res.json(req.body);
+  async signupHandler(req, res){
+      const {fullname, email, password} = req.body;
+      const user = await User.find({email});
+
+      if(user){
+          return res.statusCode(400).json({
+              statusCode:400,
+              message: "This user had already exist"
+          })
+      }
   }
 }
 

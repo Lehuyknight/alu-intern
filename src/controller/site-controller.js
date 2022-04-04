@@ -2,14 +2,14 @@ const { render } = require("express/lib/response");
 //create controller
 class SiteController{
     //get login controller
-    index(req,res){
+    loginUI(req,res){
         res.render('login.ejs',{
             title: 'Login'
         });
     };
 
     //post login controller
-    login(req,res){
+    loginHandler(req,res){
         res.json(req.body); 
     }
 }

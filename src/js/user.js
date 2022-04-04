@@ -7,7 +7,7 @@
    $(function() {
 
      // The DOM is ready!
-
+      const loginForm = $('#login-form');
    });
 
    // The rest of the code goes here!

@@ -2,6 +2,7 @@ const { notStrictEqual } = require('assert');
 const express = require('express');
 const req = require('express/lib/request');
 const app = express();
+const db = require('./config/config');
 const path = require('path');
 const siteController = require('./controller/site-controller');
 require('dotenv').config();
@@ -18,6 +19,9 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 //Express static dùng để lấy những file tĩnh mà không cần viết route
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
+//connect db
+db.connectDB(); 
 
 //Code for routes here
 //!Login

@@ -1,3 +1,4 @@
+const { notStrictEqual } = require('assert');
 const express = require('express');
 const req = require('express/lib/request');
 const app = express();
@@ -19,9 +20,12 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 //Code for routes here
-app.get('/login',siteController.index);
+app.get('/login',siteController.index)
 {
    
+}
+app.post('/login',siteController.index)
+{
 }
 
 const server = app.listen(process.env.PORT || 4050, () => {

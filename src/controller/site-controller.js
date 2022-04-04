@@ -6,11 +6,12 @@ class SiteController{
         res.render('login.ejs',{
             title: 'Login'
         });
-    }
+    };
 
     //post login controller
-    login(req,res){
-        res.json(req.body)
+    index(req,res){
+        res.json(req.body);
+        console.log("vao chua?");
     }
 }
 

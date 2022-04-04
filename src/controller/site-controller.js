@@ -4,7 +4,8 @@ const User = require('../models/md_user');
 //add bcrypt to encode
 const bcrypt = require('bcrypt');
 const salts = parseInt(process.env.SALT_ROUNDS);
-
+//add Jwt to create token
+const jwt = require('jsonwebtoken');
 //create controller
 class SiteController {
     
@@ -41,6 +42,15 @@ class SiteController {
         message: 'Wrong password',
       });
     //true
+    //create token
+    const token = jwt.sign({
+        exp: Math.floor(Date.now() / 1000) + (60 * 60),
+        uid: user._id,
+        name: user.fullname
+      }, process.env.SECRET);
+
+    console.log(token)
+
     res.status(200).json({
       statusCode: 200,
       status: 'success',

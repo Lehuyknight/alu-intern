@@ -20,5 +20,14 @@
        })
    }
 
+   function getFormBody(form){
+     const body = {};
+     const fields = form.serializeArray();
+     fields.forEach((field) => {
+       body[field.name] = field.value;
+     });
+     return body;
+   }
+
   }(window.jQuery, window, document));
   // The global jQuery object is passed as a parameter

@@ -9,7 +9,7 @@ class SiteController{
     };
 
     //post login controller
-    index(req,res){
+    login(req,res){
         res.json(req.body);
     }
 }

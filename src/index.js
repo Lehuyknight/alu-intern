@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 //Code for routes here
 app.get('/login',siteController.index);
-app.post('/login',siteController.index);
+app.post('/login',siteController.login);
 
 const server = app.listen(process.env.PORT || 4050, () => {
   console.log(`Listen complete. port ${server.address().port}`);

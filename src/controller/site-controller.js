@@ -10,7 +10,7 @@ class SiteController{
 
     //post login controller
     login(req,res){
-        res.json(req.body);
+        res.json(req.body); 
     }
 }
 

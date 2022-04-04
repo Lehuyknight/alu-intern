@@ -4,6 +4,7 @@ const req = require('express/lib/request');
 const app = express();
 const db = require('./config/config');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const siteController = require('./controller/site-controller');
 require('dotenv').config();
 //set view engine cho app, ở đây sử dụng ejs(embed javascript templating, dùng để nhúng code js vào file html)(hình như bên laravel có cái gọi là Blade)
@@ -16,12 +17,17 @@ app.set('views', path.join(__dirname, '..', 'resources', 'views'));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
+//use cookieparser
+app.use(cookieParser());
 
 //Express static dùng để lấy những file tĩnh mà không cần viết route
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 //connect db
 db.connectDB(); 
+
+//import checkAuthMiddleware
+app.use(siteController.checkAuthMiddleware);
 
 //Code for routes here
 

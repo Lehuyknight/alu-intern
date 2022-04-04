@@ -7,6 +7,14 @@ const salts = parseInt(process.env.SALT_ROUNDS);
 
 //create controller
 class SiteController {
+    
+  //get dashboard controller
+  indexUI(req,res){
+      res.render('dashboard.ejs',{
+          title: 'Dashboard',
+      });
+  }
+
   //get login controller
   loginUI(req, res) {
     res.render('login.ejs', {

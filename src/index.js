@@ -24,6 +24,10 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 db.connectDB(); 
 
 //Code for routes here
+
+//!Dashboard
+app.get('/',siteController.indexUI);
+
 //!Login
 app.get('/login',siteController.loginUI);
 app.post('/login',siteController.loginHandler);

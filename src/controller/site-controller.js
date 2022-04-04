@@ -51,7 +51,10 @@ class SiteController {
 
     console.log(token)
 
-    res.status(200).json({
+    res
+    .status(200)
+    .cookie('accessToken', token, { expires: new Date(Date.now() + 360000), httpOnly: true })
+    .json({
       statusCode: 200,
       status: 'success',
       message: 'Login succesfully',

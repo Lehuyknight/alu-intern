@@ -1,6 +1,9 @@
 const { render } = require('express/lib/response');
 //add User schema
 const User = require('../models/md_user');
+//add bcrypt to encode
+const bcrypt = require('bcrypt');
+const salts = parseInt(process.env.SALT_ROUNDS);
 
 //create controller
 class SiteController {
@@ -24,15 +27,27 @@ class SiteController {
   }
   //post signup controller
   async signupHandler(req, res){
-      const {fullname, email, password} = req.body;
+      var {fullname, email, password} = req.body;
       const user = await User.find({email});
 
-      if(user){
-          return res.statusCode(400).json({
-              statusCode:400,
-              message: "This user had already exist"
-          })
+      if(user.length !== 0)
+        return res.status(400).json({
+            statusCode:400,
+        })
+      //encode password with bcrypt
+      password = await bcrypt.hash(password, 10);
+      try{
+        await User.create({fullname,email,password});
       }
+      catch(e){
+        console.log(e);
+        throw new Error('Cant handler this request');
+      }
+      res.status(200).json({
+          statusCode: 200,
+          message: 'Sign Up succesfully!',
+          password,
+      });
   }
 }
 

@@ -25,7 +25,9 @@ app.get('/login',siteController.loginUI);
 app.post('/login',siteController.loginHandler);
 
 //SignUp
-//app.get('/signup',siteController.)
+app.get('/signup',siteController.signupUI);
+app.post('/signup',siteController.signupHandler);
+
 const server = app.listen(process.env.PORT || 4050, () => {
   console.log(`Listen complete. port ${server.address().port}`);
 });

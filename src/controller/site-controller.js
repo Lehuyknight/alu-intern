@@ -33,6 +33,7 @@ class SiteController {
     if (user.length !== 0)
       return res.status(400).json({
         statusCode: 400,
+        message: 'This user had already exit'
       });
     //encode password with bcrypt
     password = await bcrypt.hash(password, salts);
@@ -47,7 +48,7 @@ class SiteController {
       statusCode: 200,
       message: 'Sign Up succesfully!',
       password,
-    });
+    }); 
   }
 }
 

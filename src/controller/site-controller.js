@@ -21,7 +21,7 @@ class SiteController {
   }
   //post signup controller
   signupHandler(req, res){
-      
+      res.json(req.body);
   }
 }
 

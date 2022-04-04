@@ -31,6 +31,9 @@ app.use(siteController.checkAuthMiddleware);
 
 //Code for routes here
 
+//!logout
+app.get('/logout',siteController.logOut);
+
 //!Dashboard
 app.get('/',siteController.indexUI);
 

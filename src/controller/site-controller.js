@@ -14,10 +14,10 @@ class SiteController {
     const { accessToken } = req.cookies;
     res.locals.isAuthenticated = false;
     try {
-      const userInfoDecoded = jwt.verify(accessToken, process.env.SECRET);
+      res.locals.userLogged = jwt.verify(accessToken, process.env.SECRET);
       res.locals.isAuthenticated = true;
     } catch (e) {
-        res.locals.isAuthenticated = false;
+      res.locals.isAuthenticated = false;
     }
     next();
   }
@@ -25,22 +25,21 @@ class SiteController {
   //get dashboard controller
   indexUI(req, res) {
     //check Auth
-    if(!(res.locals.isAuthenticated))
-    {
-        return res.redirect('/login');
-    }  
+    if (!res.locals.isAuthenticated) {
+      return res.redirect('/login');
+    }
     res.render('dashboard.ejs', {
       title: 'Dashboard',
+      userLogged: res.locals.userLogged
     });
   }
 
   //get login controller
   loginUI(req, res) {
-      //check Auth
-    if(res.locals.isAuthenticated)
-    {
-        return res.redirect('/');
-    }  
+    //check Auth
+    if (res.locals.isAuthenticated) {
+      return res.redirect('/');
+    }
     res.render('login.ejs', {
       title: 'Login',
     });
@@ -89,13 +88,21 @@ class SiteController {
       });
   }
 
+  //!logout
+  logOut(req, res){
+      if(!res.locals.isAuthenticated) return res.redirect('/login');
+
+      res.clearCookie('accessToken');
+      res.redirect('/');
+
+  }
+
   //get signup controller
   signupUI(req, res) {
-      //check Auth
-    if(res.locals.isAuthenticated)
-    {
-        return res.redirect('/');
-    }  
+    //check Auth
+    if (res.locals.isAuthenticated) {
+      return res.redirect('/');
+    }
     res.render('signup.ejs', {
       title: 'Sign Up',
     });

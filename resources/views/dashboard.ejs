@@ -277,7 +277,7 @@
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <img src="/assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ml-1">
-                                Geneva <i class="mdi mdi-chevron-down"></i> 
+                                <%=userLogged.name%> <i class="mdi mdi-chevron-down"></i> 
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -307,7 +307,7 @@
                             <div class="dropdown-divider"></div>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <a href="/logout" class="dropdown-item notify-item">
                                 <i class="fe-log-out"></i>
                                 <span>Logout</span>
                             </a>
@@ -526,7 +526,7 @@
                         class="rounded-circle avatar-md">
                     <div class="dropdown">
                         <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
-                            data-toggle="dropdown">Geneva Kennedy</a>
+                            data-toggle="dropdown"><%=userLogged.name%> Kennedy</a>
                         <div class="dropdown-menu user-pro-dropdown">
 
                             <!-- item-->

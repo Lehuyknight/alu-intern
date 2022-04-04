@@ -20,11 +20,11 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 //Code for routes here
-//Login
+//!Login
 app.get('/login',siteController.loginUI);
 app.post('/login',siteController.loginHandler);
 
-//SignUp
+//!SignUp
 app.get('/signup',siteController.signupUI);
 app.post('/signup',siteController.signupHandler);
 
